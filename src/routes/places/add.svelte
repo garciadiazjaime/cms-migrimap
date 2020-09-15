@@ -1,7 +1,7 @@
 <script>
   import { onMount } from "svelte";
   import { goto } from '@sapper/app';
-
+  import InputBlock from '../../components/InputBlock.svelte';
   import { savePlace } from "../../utils/mintAPI";
 
   const place = {}
@@ -12,78 +12,193 @@
     await goto('/places');
 	}
 </script>
+<style>
+  .layout {
+    display: grid;
+    grid-template-columns: 1fr 250px;
+  }
+  .inputs {
+    background: #ffe8cb;
+    padding: 1em 2em;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-end: 10px;
+  }
+  .actions {
+    display: grid;
+    background: #e7ffff;
+    grid-auto-flow: row;
+    padding: 1em 2em;
+    grid-template-rows: 2em 2em;
+  }
+</style>
+<div class="layout">
+  <div class="inputs">
+    <InputBlock>
+      <span slot="label">
+        Nombre:
+      </span>
+      <span slot="input">
+        <input bind:value={place.name} >
+      </span>
+    </InputBlock>
 
-Nombre:
-<input bind:value={place.name} >
-<br />
+    <InputBlock>
+      <span slot="label">
+        Descripción:
+      </span>
+      <span slot="input">
+        <input bind:value={place.description} >
+      </span>
+    </InputBlock>
 
-Descripción:
-<input bind:value={place.description} >
-<br />
+    <InputBlock>
+      <span slot="label">
+        Perfil:
+      </span>
+      <span slot="input">
+        <input bind:value={place.profile} >
+      </span>
+    </InputBlock>
 
-Perfil:
-<input bind:value={place.profile} >
-<br />
+    <InputBlock>
+      <span slot="label">
+        Dirección:
+      </span>
+      <span slot="input">
+        <input bind:value={place.address} >
+      </span>
+    </InputBlock>
 
-Dirección:
-<input bind:value={place.address} >
-<br />
+    <InputBlock>
+      <span slot="label">
+        Dirección Google Maps:
+      </span>
+      <span slot="input">
+        <input bind:value={place.gmaps} >
+      </span>
+    </InputBlock>
 
-Dirección Google Maps:
-<input bind:value={place.gmaps} >
-<br />
+    <InputBlock>
+      <span slot="label">
+        Teléfono(s):
+      </span>
+      <span slot="input">
+        <input bind:value={place.phone} >
+      </span>
+    </InputBlock>
 
-Teléfono(s):
-<input bind:value={place.phone} >
-<br />
+    <InputBlock>
+      <span slot="label">
+        Servicios gratuitos:
+      </span>
+      <span slot="input">
+        <input bind:value={place.servicesFree} >
+      </span>
+    </InputBlock>
 
-Servicios gratuitos:
-<input bind:value={place.servicesFree} >
-<br />
+    <InputBlock>
+      <span slot="label">
+        Servicios con cuota de recuperación:
+      </span>
+      <span slot="input">
+        <input bind:value={place.servicesNonFree} >
+      </span>
+    </InputBlock>
 
-Servicios con cuota de recuperación:
-<input bind:value={place.servicesNonFree} >
-<br />
+    <InputBlock>
+      <span slot="label">
+        Fotografía(s):
+      </span>
+      <span slot="input">
+        <input bind:value={place.img} >
+      </span>
+    </InputBlock>
 
-Fotografía(s):
-<input bind:value={place.img} >
-<br />
 
-Sitio Web:
-<input bind:value={place.website} >
-<br />
+    <InputBlock>
+      <span slot="label">
+        Sitio Web:
+      </span>
+      <span slot="input">
+        <input bind:value={place.website} >
+      </span>
+    </InputBlock>
 
-Redes sociales:
-<input bind:value={place.socialNetwork} >
-<br />
+    <InputBlock>
+      <span slot="label">
+        Redes sociales:
+      </span>
+      <span slot="input">
+        <input bind:value={place.socialNetwork} >
+      </span>
+    </InputBlock>
 
-Director(a):
-<input bind:value={place.ceo} >
-<br />
+    <InputBlock>
+      <span slot="label">
+        Director(a):
+      </span>
+      <span slot="input">
+        <input bind:value={place.ceo} >
+      </span>
+    </InputBlock>
 
-Responsable:
-<input bind:value={place.owner} >
-<br />
+    <InputBlock>
+      <span slot="label">
+        Responsable:
+      </span>
+      <span slot="input">
+        <input bind:value={place.owner} >
+      </span>
+    </InputBlock>
 
-Idiomas:
-<input bind:value={place.language} >
-<br />
+    <InputBlock>
+      <span slot="label">
+        Idiomas:
+      </span>
+      <span slot="input">
+        <input bind:value={place.language} >
+      </span>
+    </InputBlock>
 
-Horario de atención:
-<input bind:value={place.schedule} >
-<br />
+    <InputBlock>
+      <span slot="label">
+        Horario de atención:
+      </span>
+      <span slot="input">
+        <input bind:value={place.schedule} >
+      </span>
+    </InputBlock>
 
-Capacidad:
-<input bind:value={place.capacity} >
-<br />
+    <InputBlock>
+      <span slot="label">
+        Capacidad:
+      </span>
+      <span slot="input">
+        <input bind:value={place.capacity} >
+      </span>
+    </InputBlock>
 
-Población actual:
-<input bind:value={place.population} >
-<br />
+    <InputBlock>
+      <span slot="label">
+        Población actual:
+      </span>
+      <span slot="input">
+        <input bind:value={place.population} >
+      </span>
+    </InputBlock>
 
-Categoría:
-<input bind:value={place.category} >
-<br />
-
-<button on:click={saveHandler}>Save</button>
-<a href="/places">Cancel</a>
+    <InputBlock>
+      <span slot="label">
+        Categoría:
+      </span>
+      <span slot="input">
+        <input bind:value={place.category} >
+      </span>
+    </InputBlock>
+  </div>
+  <div class="actions">
+    <button on:click={saveHandler}>Save</button>
+    <a href="/places">Cancel</a>
+  </div>
+</div>
