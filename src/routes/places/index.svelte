@@ -2,7 +2,7 @@
   import { onMount } from "svelte";
   import { getPlaces } from "../../utils/mintAPI";
 
-  let places = []
+  let places = [];
 
   onMount(async () => {
     places = await getPlaces();
@@ -25,8 +25,10 @@
     border-radius: 4px;
     margin-bottom: 15px;
     color: white;
+    overflow: hidden;
   }
   .toolbar a {
+    background-color: #f69571;
     text-decoration: none;
     display: inline-block;
     border-right: 1px solid rgba(255, 255, 255, .2);
