@@ -16,11 +16,17 @@
   .layout {
     display: grid;
     grid-template-columns: 1fr 250px;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  h1 {
+    color: #fff;
+    text-align: center;
   }
   .inputs {
-    border-radius: 1em 0 0 1em;
-    background: #ffe8cb;
-    padding: 1em 2em;
+    color: white;
+    background: #696A6D;
+    padding: 30px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 30px;
@@ -29,11 +35,8 @@
     display: block;
   }
   .actions {
-     border-radius: 0 1em 1em 0;
-    display: grid;
-    background: #e2e3e3;
-    grid-auto-flow: row;
-    padding: 1em 2em;
+    background: #8a8b8f;
+    padding: 30px;
   }
   input {
     border: none;
@@ -45,6 +48,9 @@
   }
   .btn-primary {
     background-color: #f69571;
+    border: none;
+    margin-bottom: 10px;
+    width: 100%;
     display: block;
     border-radius: 4px;
     box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
@@ -62,6 +68,11 @@
   }
   .btn-primary:focus {
     outline: none;
+  }
+  a {
+    display: block;
+    padding: 10px;
+    color: white;
   }
 </style>
 <h1>Crear perfil</h1>
