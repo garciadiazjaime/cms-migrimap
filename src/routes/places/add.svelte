@@ -18,20 +18,53 @@
     grid-template-columns: 1fr 250px;
   }
   .inputs {
+    border-radius: 1em 0 0 1em;
     background: #ffe8cb;
     padding: 1em 2em;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-column-end: 10px;
+    grid-column-gap: 30px;
+  }
+  .inputs span {
+    display: block;
   }
   .actions {
+     border-radius: 0 1em 1em 0;
     display: grid;
-    background: #e7ffff;
+    background: #e2e3e3;
     grid-auto-flow: row;
     padding: 1em 2em;
-    grid-template-rows: 2em 2em;
+  }
+  input {
+    border: none;
+    border-radius: 4px;
+    padding: 5px 8px;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .btn-primary {
+    background-color: #f69571;
+    display: block;
+    border-radius: 4px;
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1;
+    padding: 12px 0;
+    text-align: center;
+    text-decoration: none;
+    transition: box-shadow .28s cubic-bezier(.4,0,.2,1);
+  }
+  .btn-primary:hover {
+    color: #fff;
+  }
+  .btn-primary:focus {
+    outline: none;
   }
 </style>
+<h1>Crear perfil</h1>
 <div class="layout">
   <div class="inputs">
     <InputBlock>
@@ -198,7 +231,7 @@
     </InputBlock>
   </div>
   <div class="actions">
-    <button on:click={saveHandler}>Save</button>
-    <a href="/places">Cancel</a>
+    <button class="btn-primary" on:click={saveHandler}>Save</button>
+    <a class="" href="/places">Cancel</a>
   </div>
 </div>

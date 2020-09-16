@@ -7,6 +7,7 @@
 		border-bottom: 1px solid rgba(255,62,0,0.1);
 		font-weight: 300;
 		padding: 0 1em;
+		background-color: #696A6D;
 	}
 
 	ul {
@@ -43,6 +44,7 @@
 
 	a {
 		text-decoration: none;
+		color: white;
 		padding: 1em 0.5em;
 		display: block;
 	}
@@ -50,7 +52,7 @@
 
 <nav>
 	<ul>
-		<li><a aria-current="{segment === undefined ? 'page' : undefined}" href=".">home</a></li>
-		<li><a aria-current="{segment === 'places' ? 'page' : undefined}" href="places">places</a></li>
+		<li><a aria-current="{segment === undefined ? 'page' : undefined}" href=".">Inicio</a></li>
+		<li><a aria-current="{segment === 'places' ? 'page' : undefined}" href="places">Perfiles</a></li>
 	</ul>
 </nav>
