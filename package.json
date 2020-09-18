@@ -1,6 +1,6 @@
 {
-  "name": "TODO",
-  "description": "TODO",
+  "name": "cms-migrigamp",
+  "description": "CMS for Migrmap web app",
   "version": "0.0.1",
   "scripts": {
     "dev": "sapper dev",
