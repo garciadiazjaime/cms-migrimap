@@ -1,7 +1,7 @@
 <script>
   import { onMount } from "svelte";
   import { stores, goto } from '@sapper/app';
-  import { getPlaces, savePlace } from "../utils/mintAPI";
+  import { getPlaces, savePlace, deletePlace } from "../utils/mintAPI";
   import InputBlock from './InputBlock.svelte';
   
   const { preloading, page, session } = stores(); 
@@ -21,7 +21,13 @@
     await savePlace(place, params.id)
 
     await goto('/places');
-	}
+  }
+  
+  async function deleteHandler() {
+    await deletePlace(params.id)
+
+    await goto('/places');
+  }
 </script>
 
 <style>
@@ -256,5 +262,8 @@
   <div class="actions">
     <button class="btn-primary" on:click={saveHandler}>Save</button>
     <a class="" href="/places">Cancel</a>
+    {#if params && params.id}
+    <a href="?" on:click={deleteHandler}>Delete</a>
+    {/if}
   </div>
 </div>

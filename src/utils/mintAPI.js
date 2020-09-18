@@ -124,7 +124,25 @@ async function savePlace(profile, id) {
   await requestHelper(payload);
 }
 
+async function deletePlace(id) {
+  const payload = {
+    query: `mutation Mutation(
+      $id: String,
+    ) {
+      deleteMigriPlace(
+        id: $id,
+      )
+    }`,
+    variables: {
+      id,
+    },
+  };
+
+  await requestHelper(payload);
+}
+
 export {
   getPlaces,
-  savePlace
+  savePlace,
+  deletePlace,
 } 
