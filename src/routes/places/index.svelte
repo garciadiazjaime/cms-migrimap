@@ -31,7 +31,6 @@
     background-color: #f69571;
     text-decoration: none;
     display: inline-block;
-    border-right: 1px solid rgba(255, 255, 255, .2);
     padding: 15px;
   }
 
