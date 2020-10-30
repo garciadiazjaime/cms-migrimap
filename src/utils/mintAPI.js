@@ -21,6 +21,7 @@ function getPlacesQuery(id = '' ) {
         capacity
         population
         category
+        image
       }
     }
   `
@@ -121,7 +122,19 @@ async function savePlace(profile, id) {
     },
   };
 
-  await requestHelper(payload);
+  return await requestHelper(payload);
+}
+
+async function saveImage(formData, path) {
+  const result = await fetch(
+    `process.API_URL/image${path}`,
+    {
+      method: "POST",
+      body: formData
+    }
+  );
+
+  return await result.json()
 }
 
 async function deletePlace(id) {
@@ -144,5 +157,6 @@ async function deletePlace(id) {
 export {
   getPlaces,
   savePlace,
+  saveImage,
   deletePlace,
 } 

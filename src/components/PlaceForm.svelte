@@ -1,7 +1,7 @@
 <script>
   import { onMount } from "svelte";
   import { stores, goto } from '@sapper/app';
-  import { getPlaces, savePlace, deletePlace } from "../utils/mintAPI";
+  import { getPlaces, savePlace, deletePlace, saveImage } from "../utils/mintAPI";
   import InputBlock from './InputBlock.svelte';
   
   const { preloading, page, session } = stores(); 
@@ -18,7 +18,16 @@
 	});
 
   async function saveHandler() {
-    await savePlace(place, params.id)
+    const formData  = new FormData();
+    const selectedFile = document.getElementById('input').files[0];
+
+    formData.append('file', selectedFile);
+
+    const response = await savePlace(place, params.id)
+
+    const placeId = response.data.addMigriPlace
+
+    await saveImage(formData, `/migrimap/${placeId}`)
 
     await goto('/places');
   }
@@ -170,13 +179,13 @@
 
     <InputBlock>
       <span slot="label">
-        Fotografía(s):
+        Fotografía:
       </span>
       <span slot="input">
-        <input bind:value={place.img} >
+        <input bind:value={place.img} id="input" type="file">
       </span>
     </InputBlock>
-
+    <img src={place.image} alt="">
 
     <InputBlock>
       <span slot="label">
