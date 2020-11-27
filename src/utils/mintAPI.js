@@ -11,7 +11,6 @@ function getPlacesQuery(id = '' ) {
         phone
         servicesFree
         servicesNonFree
-        img
         website
         socialNetwork
         ceo
@@ -21,7 +20,8 @@ function getPlacesQuery(id = '' ) {
         capacity
         population
         category
-        image
+        imageUrl
+        imageId
       }
     }
   `
@@ -66,7 +66,6 @@ async function savePlace(profile, id) {
       $phone: String,
       $servicesFree: String,
       $servicesNonFree: String,
-      $img: String,
       $website: String,
       $socialNetwork: String,
       $ceo: String,
@@ -87,7 +86,6 @@ async function savePlace(profile, id) {
         phone: $phone,
         servicesFree: $servicesFree,
         servicesNonFree: $servicesNonFree,
-        img: $img,
         website: $website,
         socialNetwork: $socialNetwork,
         ceo: $ceo,
@@ -109,7 +107,6 @@ async function savePlace(profile, id) {
       phone: profile.phone,
       servicesFree: profile.servicesFree,
       servicesNonFree: profile.servicesNonFree,
-      img: profile.img,
       website: profile.website,
       socialNetwork: profile.socialNetwork,
       ceo: profile.ceo,

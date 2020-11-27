@@ -18,16 +18,17 @@
 	});
 
   async function saveHandler() {
-    const formData  = new FormData();
-    const selectedFile = document.getElementById('input').files[0];
-
-    formData.append('file', selectedFile);
-
     const response = await savePlace(place, params.id)
 
-    const placeId = response.data.addMigriPlace
+    const selectedFile = document.getElementById('input').files[0];
+    if (selectedFile) {
+      const formData  = new FormData();
+      formData.append('file', selectedFile);
+      formData.append('imageId', place.imageId)
+      const placeId = response.data.addMigriPlace
 
-    await saveImage(formData, `/migrimap/${placeId}`)
+      await saveImage(formData, `/migrimap/${placeId}`)
+    }
 
     await goto('/places');
   }
@@ -100,6 +101,10 @@
     display: block;
     padding: 10px;
     color: white;
+  }
+  img {
+    max-width: 300px;
+    height: auto;
   }
 </style>
 <h1>Crear perfil</h1>
@@ -182,10 +187,10 @@
         Fotografía:
       </span>
       <span slot="input">
-        <input bind:value={place.img} id="input" type="file">
+        <input id="input" type="file">
       </span>
     </InputBlock>
-    <img src={place.image} alt="">
+    <img src={place.imageUrl} alt="">
 
     <InputBlock>
       <span slot="label">
