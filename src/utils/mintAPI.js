@@ -22,6 +22,9 @@ function getPlacesQuery(id = '' ) {
         category
         imageUrl
         imageId
+        gps {
+          coordinates
+        }
       }
     }
   `
@@ -74,7 +77,8 @@ async function savePlace(profile, id) {
       $schedule: String,
       $capacity: String,
       $population: String,
-      $category: String
+      $category: String,
+      $gps: GPSInputTypeMigrimap,
     ) {
       addMigriPlace(
         id: $id,
@@ -94,29 +98,14 @@ async function savePlace(profile, id) {
         schedule: $schedule,
         capacity: $capacity,
         population: $population,
-        category: $category
+        category: $category,
+        gps: $gps,
       )
     }`,
     variables: {
       id,
-      name: profile.name,
-      description: profile.description,
-      profile: profile.profile,
-      address: profile.address,
-      gmaps: profile.gmaps,
-      phone: profile.phone,
-      servicesFree: profile.servicesFree,
-      servicesNonFree: profile.servicesNonFree,
-      website: profile.website,
-      socialNetwork: profile.socialNetwork,
-      ceo: profile.ceo,
-      owner: profile.owner,
-      language: profile.language,
-      schedule: profile.schedule,
-      capacity: profile.capacity,
-      population: profile.population,
-      category: profile.category,
-    },
+      ...profile
+    }
   };
 
   return await requestHelper(payload);

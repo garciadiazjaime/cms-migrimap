@@ -15,9 +15,28 @@
     if (Array.isArray(response) && response.length) {
       place = response[0]
     }
-	});
+  });
+  
+  function getGPS(gmaps) {
+    if (!gmaps) {
+      return null
+    }
+
+    const [lat, lng] = gmaps.match(/[\d]+\.[\d]+/gi)
+
+    return [parseFloat(lat), parseFloat(lng)]
+  }
 
   async function saveHandler() {
+    const gps = getGPS(place.gmaps)
+
+    if (Array.isArray(gps) && gps.length) {
+      place.gps = {
+        type: 'Point',
+        coordinates: [gps[1], gps[0]],
+      }
+    }
+
     const response = await savePlace(place, params.id)
 
     const selectedFile = document.getElementById('input').files[0];
