@@ -22,7 +22,7 @@
       return null
     }
 
-    const [lat, lng] = gmaps.match(/[\d]+\.[\d]+/gi)
+    const [lat, lng] = gmaps.match(/[-]?[\d]+\.[\d]+,/gi)
 
     return [parseFloat(lat), parseFloat(lng)]
   }
